@@ -14,7 +14,7 @@ runs:
       shell: bash
       run: |
         mkdir -p images
-        for file in $(find images -name '*.png'); do
+        for file in $(find images -name '**/*.png'); do
           convert "$file" "images/$(basename "${file%.*}").avif"
         done
 
