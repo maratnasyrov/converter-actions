@@ -16,7 +16,7 @@ runs:
     - name: Convert PNG to AVIF
       shell: bash
       run: |
-        for file in $(find . -type f -name '*.png'); do
+        for file in ${{ steps.find-png.outputs.png-files }}; do
           convert "${file}" "${file%.*}.avif"
         done
 
