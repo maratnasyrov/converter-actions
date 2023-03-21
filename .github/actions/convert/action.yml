@@ -1,13 +1,14 @@
-jobs:
-  convert:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install Imagemagick
+name: Convert
+description: Convert to avif
+
+runs:
+  using: composite
+  steps:
+    - name: Install Imagemagick
         run: |
           sudo apt-get update
           sudo apt install imagemagick
+
       - name: Convert PNG to AVIF
         run: |
           mkdir -p images
