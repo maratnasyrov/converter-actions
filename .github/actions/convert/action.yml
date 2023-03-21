@@ -5,11 +5,13 @@ runs:
   using: composite
   steps:
     - name: Install Imagemagick
+      shell: bash
       run: |
         sudo apt-get update
         sudo apt-get -y install imagemagick
 
     - name: Convert PNG to AVIF
+      shell: bash
       run: |
         mkdir -p images
         for file in $(find images -name '*.png'); do
