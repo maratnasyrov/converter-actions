@@ -16,5 +16,5 @@ runs:
       shell: bash
       run: |
         for file in $(find . -type f -name '*.png'); do
-          convert -append -background none "${file}" "${file%.*}.avif"
+          convert -transparent '#FFFFFF' "${file}" "${file%.*}.avif"
         done
