@@ -11,7 +11,7 @@ runs:
     - name: Find PNG files
       id: find-png
       shell: bash
-      run: echo "::set-output name=png-files::$(find . -type f -name '*.png')"
+      run: echo "::set-output name=png-files::$(find . -type f -name './**/*.png')"
 
     - name: Convert PNG to AVIF
       shell: bash
