@@ -12,7 +12,7 @@ runs:
       shell: bash
       run: |
         cd images/
-        for file in $(find -type f -name '*.png'); do
+        for file in $(find . -type f -name '*.png'); do
           convert "${file}" "${file%.*}.avif"
         done
 
