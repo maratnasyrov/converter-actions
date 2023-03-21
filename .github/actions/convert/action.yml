@@ -16,5 +16,5 @@ runs:
       shell: bash
       run: |
         for file in $(find . -type f -name '*.png'); do
-          convert -background transparent "${file}" "${file%.*}.avif"
+          convert -background "rgba(0,0,0,0)" "${file}" "${file%.*}.avif"
         done
