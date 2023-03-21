@@ -13,7 +13,7 @@ runs:
     - name: Convert PNG to AVIF
       shell: bash
       run: |
-        cd images
+        cd images/
         for file in $(find images -name './**/*.png'); do
           convert "$file" "images/$(basename "${file%.*}").avif"
         done
