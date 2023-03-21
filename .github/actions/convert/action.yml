@@ -18,8 +18,3 @@ runs:
         for file in $(find . -type f -name '*.png'); do
           convert "${file}" "${file%.*}.avif"
         done
-
-    - name: Commit and push changes
-      uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Convert PNG to AVIF
