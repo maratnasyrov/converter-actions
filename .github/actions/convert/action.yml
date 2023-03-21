@@ -6,8 +6,8 @@ runs:
   steps:
     - name: Install Imagemagick
       run: |
-        apt-get update
-        apt install imagemagick
+        sudo apt-get update
+        sudo apt-get -y install imagemagick
 
     - name: Convert PNG to AVIF
       run: |
