@@ -10,13 +10,16 @@ runs:
         sudo apt-get update
         sudo apt-get -y install imagemagick
 
+    - name: Find PNG files
+      id: find-png
+      shell: bash
+      run: echo "::set-output name=png-files::$(find . -type f -name '*.png')"
+
     - name: Convert PNG to AVIF
       shell: bash
       run: |
-        cd images/
-        find -name './**/*.png'
-        for file in $(find -name './**/*.png'); do
-          convert "$file" "$(basename "${file%.*}").avif"
+        for file in ${{ steps.find-png.outputs.png-files }}; do
+          magick convert "${file}" "${file%.*}.avif"
         done
 
     - name: Commit and push changes
