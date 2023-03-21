@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Convert
+        uses: ./.github/actions/convert
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

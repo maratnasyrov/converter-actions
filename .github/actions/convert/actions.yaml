@@ -1,0 +1,20 @@
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install Imagemagick
+        run: |
+          sudo apt-get update
+          sudo apt install imagemagick
+      - name: Convert PNG to AVIF
+        run: |
+          mkdir -p images
+          for file in $(find images -name '*.png'); do
+            convert "$file" "images/$(basename "${file%.*}").avif"
+          done
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Convert PNG to AVIF
