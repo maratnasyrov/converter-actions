@@ -8,15 +8,11 @@ runs:
       shell: bash
       run: sudo apt-get install -y imagemagick
 
-    - name: Find PNG files
-      id: find-png
-      shell: bash
-      run: echo "::set-output name=png-files::$(find . -type f -name '*.png')"
-
     - name: Convert PNG to AVIF
       shell: bash
       run: |
-        for file in ${{ steps.find-png.outputs.png-files }}; do
+        cd images/
+        for file in $(find -type f -name '*.png'); do
           convert "${file}" "${file%.*}.avif"
         done
 
