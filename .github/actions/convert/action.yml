@@ -14,8 +14,9 @@ runs:
       shell: bash
       run: |
         cd images/
+        find -name './**/*.png'
         for file in $(find -name './**/*.png'); do
-          convert "$file" "images/$(basename "${file%.*}").avif"
+          convert "$file" "$(basename "${file%.*}").avif"
         done
 
     - name: Commit and push changes
